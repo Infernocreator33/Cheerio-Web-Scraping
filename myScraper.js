@@ -16,7 +16,7 @@ request('https://banno.com/features/', (error, response, html) =>
         console.log("List of Products available: " + products.text().replace(/\s\s+/g, ''));
         //find the most common character in the html file and how often it is used
 
-        const mostFrequent = Array.from(html).map(mostFrequent =>
+        const mostFrequent = Array.from($(html)).map(mostFrequent =>
             {
                 _.chunk(mostFrequent.innerText, 1);
             });
