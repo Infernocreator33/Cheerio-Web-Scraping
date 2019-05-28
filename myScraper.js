@@ -6,8 +6,6 @@ request('https://banno.com/features/', (error, response, html) =>
 {
     if(!error && response.statusCode == 200)
     {
-    
-    
         const $ = cheerio.load(html);
         //Find the list of products available
         const products = $('div.flex-block div.flex-item h3');
@@ -37,11 +35,18 @@ request('https://banno.com/features/', (error, response, html) =>
         //find the number of .png files in the html file
         const numImages = Array.from($('body img')).map(numImages => numImages.src);
         console.log("Images total: " + numImages.length);
-        console.log("Images found: " , numImages); 
+        console.log("Images found: " , numImages); //error here getting undefined
         
         //find banno twitter if twitter is changed
         const twitter = $('section.footer-column:nth-child(4) ul li:nth-child(3) a').attr('href');
-            console.log("Twitter: " + twitter);
+        console.log("Twitter: " + twitter);
+        
+        //find the number of times financial institution is used
+
+        //error giving me index of html not amount of count need to keep working
+        var stringRegex = /\'financial'\g/;
+        console.log(_.findIndex($(html), stringRegex));
+        //console.log("Amount of times 'financial institution' is found in the text: " + count);
     }
     
 });
