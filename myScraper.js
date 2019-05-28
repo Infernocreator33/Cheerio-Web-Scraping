@@ -43,22 +43,25 @@ request('https://banno.com/features/', (error, response, html) =>
         
         //find the number of times financial institution is used
 
-        //errors need to keep working
+        //errors need to keep working pulling all words seperately but not finding even financial let alone
+        //financial institution which there is none in the features page
         
-        const wordArray = () => {
+        
             const count = 0;
             for(var i = 0; i < $(html).length; i++)
             {
-                const words = $(html).split(" ");
-                if(words[i] == 'financial')
+                
+                const words = _.words($(html).text());
+                //console.log(words);
+                if(words[i] === 'financial')
                 {
                     count++;
                 }
                 
             }
             console.log("Amount of times 'financial institution' is found in the text: " + count);
-        }
-        wordArray($(html));
+        
+        
         
     }
     
