@@ -38,7 +38,10 @@ request('https://banno.com/features/', (error, response, html) =>
         const numImages = Array.from($('body img')).map(numImages => numImages.src);
         console.log("Images total: " + numImages.length);
         console.log("Images found: " , numImages); 
-
+        
+        //find banno twitter if twitter is changed
+        const twitter = $('section.footer-column:nth-child(4) ul li:nth-child(3) a').attr('href');
+            console.log("Twitter: " + twitter);
     }
     
 });
