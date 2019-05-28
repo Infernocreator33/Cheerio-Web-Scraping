@@ -43,10 +43,23 @@ request('https://banno.com/features/', (error, response, html) =>
         
         //find the number of times financial institution is used
 
-        //error giving me index of html not amount of count need to keep working
-        var stringRegex = /\'financial'\g/;
-        console.log(_.findIndex($(html), stringRegex));
-        //console.log("Amount of times 'financial institution' is found in the text: " + count);
+        //errors need to keep working
+        
+        const wordArray = () => {
+            const count = 0;
+            for(var i = 0; i < $(html).length; i++)
+            {
+                const words = $(html).split(" ");
+                if(words[i] == 'financial')
+                {
+                    count++;
+                }
+                
+            }
+            console.log("Amount of times 'financial institution' is found in the text: " + count);
+        }
+        wordArray($(html));
+        
     }
     
 });
