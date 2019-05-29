@@ -43,23 +43,21 @@ request('https://banno.com/features/', (error, response, html) =>
         
         //find the number of times financial institution is used
 
-        //errors need to keep working pulling all words seperately but not finding even financial let alone
-        //financial institution which there is none in the features page
-        
-        
-            const count = 0;
-            for(var i = 0; i < $(html).length; i++)
+        //errors I'm getting financial one time and not twice like it should be on features page and I dont know why
+            var count = 0;
+            for(var i = 0; i < $(html).length; ++i)
             {
                 
                 const words = _.words($(html).text());
-                //console.log(words);
-                if(words[i] === 'financial')
+                
+                if(words[i].trim() == 'financial')
                 {
-                    count++;
+                    (console.log(words[i]));
+                    ++count;
                 }
                 
             }
-            console.log("Amount of times 'financial institution' is found in the text: " + count);
+            console.log("Amount of times 'financial' is found in the text: " + count);
         
         
         
