@@ -33,9 +33,15 @@ request('https://banno.com/features/', (error, response, html) =>
             }
             console.log("Most used character: " + findMostFrequent(charTemp));
         //find the number of .png files in the html file
-        const numImages = Array.from($('body img')).map(numImages => numImages.src);
+        const numImages = [];
+
+        $('img').each((i, elem) => 
+        {
+            numImages[i] = $(elem).attr("src");
+        });
+        numImages.join(', ');
         console.log("Images total: " + numImages.length);
-        console.log("Images found: " , numImages); //error here getting undefined
+        console.log("Images found: " , numImages); 
         
         //find banno twitter if twitter is changed
         const twitter = $('section.footer-column:nth-child(4) ul li:nth-child(3) a').attr('href');
