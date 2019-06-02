@@ -50,13 +50,17 @@ request('https://banno.com/features/', (error, response, html) =>
         //find the number of times financial institution is used
 
         //errors I'm getting financial one time and not twice like it should be on features page and I dont know why
+
+        // var count = $('html').innerHTML = /financial institution/g.length;
+
+
             var count = 0;
-            for(var i = 0; i < $(html).length; ++i)
+            for(var i = 0; i < $('div.flex-item').length; ++i)
             {
                 
-                const words = _.words($(html).text());
+                const words = _.words($(html));
                 
-                if(words[i].trim() == 'financial')
+                if(words[i].trim() === 'financial')
                 {
                     (console.log(words[i]));
                     ++count;
